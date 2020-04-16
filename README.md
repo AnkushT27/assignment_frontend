@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # NgAssignment
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
@@ -25,3 +26,20 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+# assignment_frontend
+
+To RUN the Angular app,Follow the steps
+
+1. Run npm install --save
+2. Go to enviornment.ts file and change the base URL property to the server address for the backend of this app
+
+export const environment = {
+  production: false,
+  baseURL:'(Your Base URL for NodeJS)'
+ 
+};
+
+
+3. Run ng server and hit localhost:4200
+>>>>>>> 80ec7534e101d844a13e52376834926f84ad0aca
