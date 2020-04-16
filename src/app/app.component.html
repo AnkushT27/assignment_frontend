@@ -1,20 +1,78 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<div class="main">
+  <section>
+    <!--   <button id="sideBar">Show/Hide Right Push Menu</button> -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-md-7">
+                  <h1>USERS</h1>
+                </div>
+                <div class="col-md-5">
+                  <div class="input-group search-header">
+                    <div class="input-group-append">
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <table  class="table table-borderless table-hover">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr *ngFor="let user of users;let i = index">
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                  <td>
+                    <a  class="btn-action"  (click)="getUserByID(user.id)"><img src="../assets/icons8-edit.svg" alt=""></a>
+                    </td>
+                   </tr>
+                </tbody>
+                  </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </section>
+                  
+                </div>
+         
+                  <div class="modal-header">
+                       <h4 class="modal-title">Add New User Details</h4>
+                      <button type="button" class="close" data-dismiss="modal" (click)="closeModal()" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                      </button>
+                   </div>
+                      <div class="modal-body">
+                        <form novalidate (ngSubmit)="(!editFlag ? saveUser() : updateUser())" [formGroup]="addUserForm" autocomplete="off">
+                          <div class="name-link align-item-center justify-content-between">
+                            <label for="name">User Name</label>
+                            <input type="text" class="fname" name="fname" id="name" placeholder="Enter Name" formControlName="name">
+                             <span class="error" *ngIf="(addUserForm.get('name').hasError('required') && addUserForm.get('name').touched)">
+                                  This field is mandatory
+                             </span>
+                          </div>
+                          <label for="email">Email</label>
+                           <input type="email" class="mail" size="30" id="email" placeholder=" Enter E-mail" formControlName="email" required>
+                            <span class="error" *ngIf="(addUserForm.get('email').hasError('required') && addUserForm.get('email').touched)">
+                                  This field is mandatory
+                             </span>
+                             <span *ngIf="(addUserForm.get('email').hasError('pattern') && addUserForm.get('email').touched)" class="error">*Invalid Email</span>
+                            <div class="modal-footer d-flex justify-content-center">
+                               <button type="submit" *ngIf=!editFlag  class="btn-1 btn-primary" [disabled]='!addUserForm.valid'>ADD CUSTOMER</button>
+                               <button type="submit" *ngIf=editFlag  class="btn-1 btn-primary" [disabled]='!addUserForm.valid'>UPDATE CUSTOMER</button>
+                            </div>
+                          </form>  
+                         </div>
+      
